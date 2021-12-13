@@ -13,7 +13,6 @@ const GetRoot = async (req, res) => {
 
 const GetRates = async (req, res, next) => {
   try {
-    console.log('here')
     const response = await axios.get(`${BASE_URL}/latest?access_key=${TOKEN}`)
     await Redis.set('rates', JSON.stringify(response.data), { EX: 2700 })
     res.send(response.data)

@@ -11,4 +11,8 @@ app.use(cors())
 app.use(router)
 app.use(ErrorMiddleware)
 
+app.use((req, res) => {
+  res.status(400).send('No route found!')
+})
+
 app.listen(process.env.PORT)
