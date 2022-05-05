@@ -13,7 +13,7 @@ const GetRoot = async (req, res) => {
 
 const GetRates = async (req, res, next) => {
   try {
-    const response = await axios.get(`${BASE_URL}/latest?access_key=${TOKEN}`)
+    const response = await axios.get(`${BASE_URL}/latest?apikey=${TOKEN}`)
     await Redis.set('rates', JSON.stringify(response.data), { EX: 2700 })
     res.send(response.data)
   } catch (error) {
@@ -23,7 +23,7 @@ const GetRates = async (req, res, next) => {
 
 const GetSymbols = async (req, res, next) => {
   try {
-    const response = await axios.get(`${BASE_URL}/symbols?access_key=${TOKEN}`)
+    const response = await axios.get(`${BASE_URL}/symbols?apikey=${TOKEN}`)
     await Redis.set('symbols', JSON.stringify(response.data), { EX: 2700 })
     res.send(response.data)
   } catch (error) {

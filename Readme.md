@@ -1,1 +1,1 @@
-# Nodejs Exchange Rates
+# Exchange Rates API

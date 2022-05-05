@@ -5,8 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon -r dotenv/config src/index.js dotenv_config_path=./dev.env",
-    "start": "node -r dotenv/config src/index.js dotenv_config_path=./prod.env",
+    "dev": "NODE_ENV=dev nodemon -r dotenv/config src/index.js",
+    "start": "NODE_ENV=prod node -r dotenv/config src/index.js",
     "deploy": "./deploy.sh"
   },
   "keywords": [
@@ -18,14 +18,13 @@
   "author": "shanmukeshwar",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.24.0",
+    "axios": "^0.27.2",
     "cors": "^2.8.5",
-    "dotenv": "^10.0.0",
-    "express": "^4.17.1",
-    "redis": "^4.0.0"
+    "dotenv": "^16.0.0",
+    "express": "^4.18.1",
+    "redis": "^4.1.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.15",
-    "npm-check-updates": "^12.0.3"
+    "nodemon": "^2.0.16"
   }
 }

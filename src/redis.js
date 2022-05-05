@@ -1,8 +1,20 @@
 import redis from 'redis'
 
-const Client = redis.createClient(JSON.parse(process.env.REDIS_CONFIG))
+const { RedisUrl, RedisPassword } = process.env
 
-const connect = async () => await Client.connect()
-connect()
+const client = redis.createClient({
+  url: RedisUrl,
+  password: RedisPassword,
+})
 
-export default Client
+client.connect()
+
+client.on('connect', () => {
+  console.log('Redis connection succeed')
+})
+
+client.on('error', (err) => {
+  console.log(`Redis connection failed ${err.message}`)
+})
+
+export default client
